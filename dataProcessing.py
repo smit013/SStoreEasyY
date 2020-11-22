@@ -21,7 +21,7 @@ def Segment():
 				f.close()
 				break
 		f.close()
-	#os.remove('Original.txt')
+	os.remove('Original.txt')
 
 def gatherInfo():
 	path1=os.getcwd()
