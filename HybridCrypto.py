@@ -5,6 +5,7 @@ from dataProcessing import *
 from Threads import *
 from flask import send_file
 import time
+
 script = ''
 
 UPLOAD_FOLDER = '.'
@@ -14,7 +15,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def resultE():
-    return render_template('Result.html')
+    return render_template('result.html')
 
 def resultD():
     return render_template('resultD.html')
@@ -46,7 +47,7 @@ def start():
   if not first_char:
     return render_template('Empty.html')
   else:
-    return render_template('Option.html')
+    return render_template('option.html')
 
 @app.route('/')
 def index():
@@ -75,16 +76,16 @@ def return_files_data():
 def upload_file():
   if request.method == 'POST':
     if 'file' not in request.files:
-      return render_template('Nofile.html')
+      return render_template('nofile.html')
     file = request.files['file']
     if file.filename == '':
-      return render_template('Nofile.html')
+      return render_template('nofile.html')
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'Original.txt'))
       return start()
        
-    return render_template('Invalid.html')
+    return render_template('invalid.html')
     
 if __name__ == '__main__':
   app.run(debug=True)
