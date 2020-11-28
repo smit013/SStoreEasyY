@@ -37,3 +37,4 @@ def FetchKey():
 	key2=f.read()
 	f.close()
 	return key1,key2
+
